@@ -1,18 +1,4 @@
-from maze_generator import generate_perfect_maze
-from visualizer import run_visual
-import sys
-sys.setrecursionlimit(10000)
-
-def open_area_5x5(maze, x, y):
-    n = len(maze)
-
-    for i in range(x-2, x+3):
-        for j in range(y-2, y+3):
-            if 0 <= i < n and 0 <= j < n:
-                maze[i][j] = 0
-
-
-def solve_maze():
+def solve_maze_BFS():
     size = 100
     maze = generate_perfect_maze(size)
 
@@ -72,6 +58,3 @@ def solve_maze():
     path.reverse()
 
     return maze, frames, path, start, goal
-
-maze, frames, path, start, goal = solve_maze()
-run_visual(maze, frames, path, start, goal)
