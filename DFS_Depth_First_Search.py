@@ -34,7 +34,7 @@ def solve_maze():
 
     # ---------------- BFS ----------------
     while queue:
-        x, y = queue.pop(0)
+        x, y = queue.pop()
 
         # save snapshot of current state
         frames.append((set(visited), (x, y)))
