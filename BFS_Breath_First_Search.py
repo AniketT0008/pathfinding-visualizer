@@ -12,7 +12,7 @@ def open_area_5x5(maze, x, y):
                 maze[i][j] = 0
 
 
-def solve_maze():
+def solve_maze_BFS():
     size = 100
     maze = generate_perfect_maze(size)
 
@@ -73,5 +73,5 @@ def solve_maze():
 
     return maze, frames, path, start, goal
 
-maze, frames, path, start, goal = solve_maze()
+maze, frames, path, start, goal = solve_maze_BFS()
 run_visual(maze, frames, path, start, goal)
