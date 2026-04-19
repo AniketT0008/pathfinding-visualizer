@@ -2,9 +2,19 @@ import random
 import sys
 sys.setrecursionlimit(10000)
 
-def generate_perfect_maze(n=50, loop_chance=0.15):
+def open_area_5x5(maze, x, y):
+    n = len(maze)
+
+    for i in range(x-2, x+3):
+        for j in range(y-2, y+3):
+            if 0 <= i < n and 0 <= j < n:
+                maze[i][j] = 0
+
+def generate_perfect_maze(n=100, start=(0,0), goal=(99,99)):
 
     maze = [[1 for _ in range(n)] for _ in range(n)]
+
+    loop_chance=0.15
 
     def carve(x, y):
         maze[x][y] = 0

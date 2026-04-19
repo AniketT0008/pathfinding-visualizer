@@ -1,77 +1,49 @@
-from maze_generator import generate_perfect_maze
-from visualizer import run_visual
-import sys
-sys.setrecursionlimit(10000)
-
-def open_area_5x5(maze, x, y):
-    n = len(maze)
-
-    for i in range(x-2, x+3):
-        for j in range(y-2, y+3):
-            if 0 <= i < n and 0 <= j < n:
-                maze[i][j] = 0
-
-
-def solve_maze_BFS():
-    size = 100
-    maze = generate_perfect_maze(size)
-
-    start = (0, 0)
-    goal = (size-1, size-1)
-
-    open_area_5x5(maze, *start)
-    open_area_5x5(maze, *goal)
+def solve_maze_BFS(maze, start, goal):
 
     queue = [start]
     visited = set([start])
     parent = {}
 
-    frames = []  
-    def is_valid(x, y):
-        return 0 <= x < len(maze) and 0 <= y < len(maze[0]) and maze[x][y] == 0
+    frames = []
+
+    rows, cols = len(maze), len(maze[0])
+
+    def valid(x, y):
+        return 0 <= x < rows and 0 <= y < cols and maze[x][y] == 0
 
     dirs = [(1,0),(-1,0),(0,1),(0,-1)]
 
-    # ---------------- BFS ----------------
     while queue:
+
         x, y = queue.pop(0)
 
-        # save snapshot of current state
         frames.append((set(visited), (x, y)))
 
         if (x, y) == goal:
             break
 
         for dx, dy in dirs:
-            nx, ny = x + dx, y + dy
 
-            if is_valid(nx, ny) and (nx, ny) not in visited:
+            nx, ny = x+dx, y+dy
+
+            if valid(nx, ny) and (nx, ny) not in visited:
+
                 queue.append((nx, ny))
                 visited.add((nx, ny))
                 parent[(nx, ny)] = (x, y)
 
-    # ---------------- reconstruct path ----------------
+    # reconstruct
+    if goal not in parent:
+        return frames, None
+
     path = []
     node = goal
 
-    path = []
-
-    if goal not in parent:
-        print("No path found (BFS did not reach goal)")
-        path = []
-    else:
-        node = goal
-        while node != start:
-            path.append(node)
-            node = parent[node]
-
-        path.append(start)
-        path.reverse()
+    while node != start:
+        path.append(node)
+        node = parent[node]
 
     path.append(start)
     path.reverse()
 
-    return maze, frames, path, start, goal
-
-maze, frames, path, start, goal = solve_maze_BFS()
-run_visual(maze, frames, path, start, goal)
+    return frames, path
