@@ -6,4 +6,5 @@ from DFS_Depth_First_Search import solve_maze_DFS
 sys.setrecursionlimit(10000)
 
 
-run_visual(solve_maze())
+run_visual(solve_maze_BFS())
+run_visual(solve_maze_BFS())
