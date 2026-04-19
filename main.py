@@ -7,4 +7,4 @@ sys.setrecursionlimit(10000)
 
 
 run_visual(solve_maze_BFS())
-run_visual(solve_maze_BFS())
+run_visual(solve_maze_DFS())
