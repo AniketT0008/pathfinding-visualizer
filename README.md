@@ -46,3 +46,12 @@ visualizer.py                  # Handles animation and rendering
 Astar.py                       # A* pathfinding implementation
 BFS_Breath_First_Search.py     # BFS implementation
 DFS_Depth_First_Search.py      # DFS implementation
+
+###Example Input and Output
+
+Input:
+<img width="425" height="121" alt="Demo" src="https://github.com/user-attachments/assets/cbf969f4-328d-4af6-9245-ccb63ec4dba7" />
+
+
+Output:
+<img width="376" height="398" alt="image" src="https://github.com/user-attachments/assets/ad86dcae-fc1b-4571-b1f9-ab6bcfaa548b" />
