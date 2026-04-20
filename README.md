@@ -40,7 +40,7 @@ The maze is represented as a 2D grid:
     BFS
     DFS
 ### Project Structure
-main.py                         # Entry point (user interaction + control flow)
+main.py                        # Entry point (user interaction + control flow)
 maze_generator.py              # Generates random maze grid
 visualizer.py                  # Handles animation and rendering
 Astar.py                       # A* pathfinding implementation
