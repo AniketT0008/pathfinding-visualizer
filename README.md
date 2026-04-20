@@ -27,3 +27,22 @@ The maze is represented as a 2D grid:
 ## How to Run
 
 1. Install dependencies:
+   pygame
+   numpy
+   opencv-python
+2. Run:
+   python main.py
+
+### Input
+  Enter maze size (e.g., 50, 100)
+  Choose algorithm:
+    A*
+    BFS
+    DFS
+### Project Structure
+main.py                         # Entry point (user interaction + control flow)
+maze_generator.py              # Generates random maze grid
+visualizer.py                  # Handles animation and rendering
+Astar.py                       # A* pathfinding implementation
+BFS_Breath_First_Search.py     # BFS implementation
+DFS_Depth_First_Search.py      # DFS implementation
