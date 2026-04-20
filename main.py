@@ -7,21 +7,40 @@ import sys
 
 sys.setrecursionlimit(10000)
 
-size = int(input("Enter size: "))
 
-maze = generate_perfect_maze(size)
+def main():
+    size = int(input("Enter maze size: "))
 
-start = (0, 0)
-goal = (size-1, size-1)
+    maze = generate_perfect_maze(size)
 
-open_area_5x5(maze, *start)
-open_area_5x5(maze, *goal)
+    start = (0, 0)
+    goal = (size - 1, size - 1)
 
-frames, path = astar(size, maze, start, goal)
-run_visual(maze, frames, path, start, goal)
+    open_area_5x5(maze, *start)
+    open_area_5x5(maze, *goal)
 
-frames, path = solve_maze_BFS(maze, start, goal)
-run_visual(maze, frames, path, start, goal)
+    print("\nChoose algorithm:")
+    print("1 - A*")
+    print("2 - BFS")
+    print("3 - DFS")
 
-frames, path = solve_maze_DFS(maze, start, goal)
-run_visual(maze, frames, path, start, goal)
+    choice = input("Enter choice: ").strip()
+
+    if choice == "1":
+        frames, path = astar(size, maze, start, goal)
+
+    elif choice == "2":
+        frames, path = solve_maze_BFS(maze, start, goal)
+
+    elif choice == "3":
+        frames, path = solve_maze_DFS(maze, start, goal)
+
+    else:
+        print("Invalid choice. Defaulting to A*.")
+        frames, path = astar(size, maze, start, goal)
+
+    run_visual(maze, frames, path, start, goal)
+
+
+if __name__ == "__main__":
+    main()
